@@ -1,8 +1,8 @@
-import { shallow } from 'enzyme';
-import * as React from 'react';
-import * as expect from 'expect';
-
-import DiffViewer from '../lib/index';
+import { shallow } from "enzyme";
+import * as React from "react";
+import * as expect from "expect";
+// @ts-expect-error
+import DiffViewer from "../lib/index";
 
 const oldCode = `
 const a = 123
@@ -23,32 +23,24 @@ const aa = 123
 const bb = 456
 `;
 
-describe('Testing react diff viewer', (): void => {
-  it('It should render a table', (): void => {
-    const node = shallow(<DiffViewer
-      oldValue={oldCode}
-      newValue={newCode}
-    />);
+describe("Testing react diff viewer", (): void => {
+  it("It should render a table", (): void => {
+    const node = shallow(<DiffViewer oldValue={oldCode} newValue={newCode} />);
 
-    expect(node.find('table').length).toEqual(1);
+    expect(node.find("table").length).toEqual(1);
   });
 
-  it('It should render diff lines in diff view', (): void => {
-    const node = shallow(<DiffViewer
-      oldValue={oldCode}
-      newValue={newCode}
-    />);
+  it("It should render diff lines in diff view", (): void => {
+    const node = shallow(<DiffViewer oldValue={oldCode} newValue={newCode} />);
 
-    expect(node.find('table > tbody tr').length).toEqual(7);
+    expect(node.find("table > tbody tr").length).toEqual(7);
   });
 
-  it('It should render diff lines in inline view', (): void => {
-    const node = shallow(<DiffViewer
-      oldValue={oldCode}
-      newValue={newCode}
-      splitView={false}
-    />);
+  it("It should render diff lines in inline view", (): void => {
+    const node = shallow(
+      <DiffViewer oldValue={oldCode} newValue={newCode} splitView={false} />
+    );
 
-    expect(node.find('table > tbody tr').length).toEqual(9);
+    expect(node.find("table > tbody tr").length).toEqual(9);
   });
 });
