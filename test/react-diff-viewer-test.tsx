@@ -1,7 +1,6 @@
 import { shallow } from "enzyme";
 import * as React from "react";
 import * as expect from "expect";
-// @ts-expect-error
 import DiffViewer from "../lib/index";
 
 const oldCode = `
